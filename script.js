@@ -1,169 +1,164 @@
-// Smart Trash Bin - unified script for all pages
-const STORAGE_KEY = "smartTrashUserData_v1";
+// ==========================================================
+// SMART TRASH BIN PROJECT - SCRIPT.JS
+// Author: Sushanth Thenraj
+// Version: 2.0 (Fully Interactive & Linked)
+// ==========================================================
 
-function getData() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (raw) return JSON.parse(raw);
-  const init = { username: "Sushanth", points: 0, balance: 0, logs: [] };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(init));
-  return init;
-}
-function saveData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
-
-// Utilities
-function randFloat(min, max) { return +(Math.random() * (max - min) + min).toFixed(2); }
-function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-
-// Chemical signatures
-const CHEMICAL_SIGNS = {
-  organic: ["C6H12O6", "CH4", "CO2"],
-  plastic: ["C2H4", "C8H8", "C3H6"],
-  metal: ["Fe", "Al", "Cu"],
-  glass: ["SiO2", "Na2O", "CaO"]
-};
-
-// Core detection logic (shared)
-function simulateDetection(wasteType) {
-  const all = Object.values(CHEMICAL_SIGNS).flat();
-  const detected = pick(all);
-  const confidence = randFloat(0.6, 1.0);
-  const correct = (CHEMICAL_SIGNS[wasteType] || []).includes(detected) && confidence > 0.75;
-  return { wasteType, detected, confidence, correct, timestamp: new Date().toISOString() };
+// === INITIALIZATION ===
+function initUserData() {
+  let userData = localStorage.getItem("smartBinUser");
+  if (!userData) {
+    userData = {
+      username: "EcoUser01",
+      balance: 200,
+      rewards: [],
+      totalWaste: 0,
+      binsUsed: 0,
+    };
+    localStorage.setItem("smartBinUser", JSON.stringify(userData));
+  }
+  return JSON.parse(userData);
 }
 
-// Wire Throw page
-(function wireThrow() {
-  const select = document.getElementById("wasteType");
-  const btn = document.getElementById("detectBtn");
-  const result = document.getElementById("result");
-  if (!btn || !select || !result) return;
+function saveUserData(data) {
+  localStorage.setItem("smartBinUser", JSON.stringify(data));
+}
 
-  btn.addEventListener("click", () => {
-    const val = select.value.toLowerCase();
-    if (!val) { result.textContent = "Please choose a waste type."; return; }
-    result.textContent = "Scanning...";
-    setTimeout(() => {
-      const r = simulateDetection(val);
-      const data = getData();
-      data.logs.push(r);
-      if (data.logs.length > 100) data.logs.shift();
-      if (r.correct) {
-        const points = Math.floor(r.confidence * 10);
-        data.points += points;
-        data.balance += points;
-        result.innerHTML = `🔬 Detected: <b>${r.detected}</b><br>Confidence: ${r.confidence * 100}%<br>✅ Correct! +${points} points`;
-      } else {
-        result.innerHTML = `🔬 Detected: <b>${r.detected}</b><br>Confidence: ${r.confidence * 100}%<br>⚠️ Not confident enough — no points.`;
-      }
-      saveData(data);
-    }, 800);
-  });
-})();
+// === DISPLAY USER INFO ON EACH PAGE ===
+function displayUserInfo() {
+  const data = initUserData();
+  const balanceElement = document.getElementById("userBalance");
+  if (balanceElement) balanceElement.textContent = data.balance;
 
-// Wire Status page
-(function wireStatus() {
-  const nameEl = document.getElementById("userName");
-  const ptsEl = document.getElementById("userPoints");
-  const balEl = document.getElementById("userBalance");
-  if (!ptsEl || !balEl) return;
-  const data = getData();
-  if (nameEl) nameEl.textContent = data.username;
-  ptsEl.textContent = data.points;
-  balEl.textContent = data.balance;
-})();
+  const usernameElement = document.getElementById("username");
+  if (usernameElement) usernameElement.textContent = data.username;
+}
 
-// Wire Calibration page
-(function wireCalibration() {
-  const btn = document.getElementById("calibrateBtn");
-  const out = document.getElementById("calibrationResult");
-  if (!btn || !out) return;
-  btn.addEventListener("click", () => {
-    out.innerHTML = "Recalibrating sensors...<br>";
-    ["organic","plastic","metal","glass"].forEach(s => {
-      const offset = randFloat(-0.05, 0.05);
-      const mult = randFloat(0.9, 1.1);
-      out.innerHTML += `🔧 ${s.toUpperCase()}: offset=${offset}, multiplier=${mult}<br>`;
-    });
-  });
-})();
+// === ADD WASTE AND REWARD POINTS ===
+function addWaste(wasteType) {
+  const data = initUserData();
+  let points = 0;
 
-// Wire Maintenance page
-(function wireMaintenance() {
-  const btn = document.getElementById("checkBtn");
-  const out = document.getElementById("maintenanceOutput");
-  if (!btn || !out) return;
-  btn.addEventListener("click", () => {
-    out.innerHTML = "Running diagnostics...<br>";
-    ["organic","plastic","metal","glass"].forEach(s => {
-      const health = Math.floor(Math.random()*16)+85;
-      const temp = randFloat(22, 30);
-      const status = health >= 90 ? "OK" : "Needs Cleaning";
-      out.innerHTML += `${s.toUpperCase()}: Health ${health}%, Temp ${temp}°C — ${status}<br>`;
-    });
-  });
-})();
+  switch (wasteType) {
+    case "organic": points = 10; break;
+    case "plastic": points = 20; break;
+    case "metal": points = 30; break;
+    case "glass": points = 25; break;
+    default: points = 5;
+  }
 
-// Wire Logs page
-(function wireLogs() {
-  const list = document.getElementById("logList");
-  const clearBtn = document.getElementById("clearLogsBtn");
-  const refreshBtn = document.getElementById("refreshLogsBtn");
-  if (!list) return;
-  function render() {
-    const data = getData();
-    list.innerHTML = "";
-    const logs = (data.logs || []).slice(-20).reverse();
-    if (logs.length === 0) {
-      list.innerHTML = "<li>No logs yet.</li>";
-      return;
+  data.balance += points;
+  data.totalWaste += 1;
+  data.binsUsed += 1;
+
+  saveUserData(data);
+
+  const output = document.getElementById("output");
+  if (output) {
+    output.innerHTML = `♻️ You threw <b>${wasteType}</b> waste correctly and earned ${points} points!<br>
+                        Total Balance: ${data.balance} coins.`;
+  }
+
+  displayUserInfo();
+}
+
+// === BUY REWARD ITEM ===
+function buyItem(item, cost) {
+  const data = initUserData();
+  const output = document.getElementById("output");
+
+  if (data.balance >= cost) {
+    data.balance -= cost;
+    data.rewards.push(item);
+    saveUserData(data);
+    displayUserInfo();
+
+    if (output) {
+      output.innerHTML = `✅ You purchased <b>${item}</b> for ${cost} coins.<br>Remaining Balance: ${data.balance}`;
     }
-    logs.forEach(l => {
-      const li = document.createElement("li");
-      li.textContent = `${l.timestamp} | ${l.wasteType.toUpperCase()} | ${l.detected} | Conf: ${l.confidence} | ${l.correct ? "✔" : "✖"}`;
-      list.appendChild(li);
-    });
-  }
-  render();
-  if (refreshBtn) refreshBtn.addEventListener("click", render);
-  if (clearBtn) {
-    clearBtn.addEventListener("click", () => {
-      const d = getData(); d.logs = []; saveData(d); render();
-    });
-  }
-})();
 
-// Wire Rewards page
-(function wireRewards() {
-  const balanceEl = document.getElementById("balanceDisplay");
-  const buyBtns = document.querySelectorAll(".buyBtn");
-  const purchaseMessage = document.getElementById("purchaseMessage");
-  if (!balanceEl) return;
-  function refreshBalance() {
-    balanceEl.textContent = getData().balance;
+    // Eco Crystal Special Animation
+    if (item === "Eco Crystal") {
+      const popup = document.createElement("div");
+      popup.id = "rarePopup";
+      popup.innerHTML = "✨ You unlocked a <b>Rare Eco Crystal!</b> 💎";
+      document.body.appendChild(popup);
+      popup.style.display = "block";
+      setTimeout(() => popup.remove(), 3000);
+    }
+
+  } else {
+    if (output) {
+      output.innerHTML = `❌ Not enough coins to buy ${item}.`;
+    }
   }
-  refreshBalance();
-  buyBtns.forEach(btn => {
+}
+
+// === SHOW STATUS PAGE DETAILS ===
+function showStatus() {
+  const data = initUserData();
+  const statusBox = document.getElementById("statusInfo");
+  if (statusBox) {
+    statusBox.innerHTML = `
+      <h3>User Status</h3>
+      <p><b>Name:</b> ${data.username}</p>
+      <p><b>Balance:</b> ${data.balance} coins</p>
+      <p><b>Total Waste Thrown:</b> ${data.totalWaste}</p>
+      <p><b>Bins Used:</b> ${data.binsUsed}</p>
+      <p><b>Rewards:</b> ${data.rewards.join(", ") || "None"}</p>
+    `;
+  }
+}
+
+// === RESET DATA (MAINTENANCE / CALIBRATION) ===
+function resetData() {
+  localStorage.removeItem("smartBinUser");
+  const msg = document.getElementById("output");
+  if (msg) {
+    msg.innerHTML = "⚙️ All system data reset successfully.";
+  }
+  displayUserInfo();
+}
+
+// === BUTTON LISTENERS ===
+document.addEventListener("DOMContentLoaded", () => {
+  displayUserInfo();
+
+  // Waste throw buttons
+  const wasteBtns = document.querySelectorAll(".throwBtn");
+  wasteBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const item = btn.dataset.item;
-      const cost = parseInt(btn.dataset.cost, 10);
-      const d = getData();
-      if (d.balance >= cost) {
-        d.balance -= cost;
-        saveData(d);
-        purchaseMessage.textContent = `✅ Purchased ${item}. Remaining balance: ${d.balance}`;
-      } else {
-        purchaseMessage.textContent = `❌ Not enough coins to buy ${item}.`;
-      }
-      refreshBalance();
+      addWaste(btn.dataset.type);
     });
   });
-})();
 
-// global: update nav 'active' class based on current file
-(function setActiveNav() {
-  const path = window.location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll(".navbar a").forEach(a => {
-    const href = a.getAttribute("href");
-    if (href === path) { a.classList.add("active"); } else { a.classList.remove("active"); }
+  // Reward buy buttons
+  const buyBtns = document.querySelectorAll(".buyBtn");
+  buyBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buyItem(btn.dataset.item, parseInt(btn.dataset.cost));
+    });
   });
-})();
+
+  // Reset system button
+  const resetBtn = document.getElementById("resetBtn");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", resetData);
+  }
+
+  // Status load
+  if (document.body.dataset.page === "status") {
+    showStatus();
+  }
+});
+
+// === ANIMATIONS & VISUAL FEEDBACK ===
+function animateButton(btn) {
+  btn.classList.add("clicked");
+  setTimeout(() => btn.classList.remove("clicked"), 300);
+}
+
+// === DEBUG TOOL (Optional) ===
+function debugUser() {
+  console.log("User Data:", initUserData());
+}

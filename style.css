@@ -23,3 +23,38 @@ h2{color:#38bdf8;margin-bottom:12px}
 select{padding:8px;border-radius:6px;border:1px solid #38bdf8;background:#0f172a;color:#e2e8f0}
 footer{text-align:center;padding:12px;background:#111827;border-top:2px solid #38bdf8;margin-top:18px}
 @media (max-width:600px){main{padding:16px}.navbar a{padding:6px 8px}}
+/* === Rare Item (Eco Crystal) Styling === */
+.rare {
+  background: linear-gradient(145deg, #1a0033, #3a0073);
+  color: #fff;
+  border: 2px solid #a855f7;
+  box-shadow: 0 0 20px #a855f7;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.rare:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px #d946ef;
+}
+
+/* === Purchase Popup Animation === */
+#rarePopup {
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(45, 0, 65, 0.9);
+  color: #fff;
+  padding: 25px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #d946ef;
+  font-size: 1.2rem;
+  z-index: 1000;
+  animation: popupFade 1s ease forwards;
+}
+
+@keyframes popupFade {
+  0% { opacity: 0; transform: translate(-50%, -60%) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
