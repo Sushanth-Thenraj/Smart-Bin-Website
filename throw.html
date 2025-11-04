@@ -1,56 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Trash Bin | Throw Waste</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Throw Waste</title>
+  <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
   <header>
-    <h1>♻️ Smart Trash Bin System</h1>
-    <p class="tagline">Detect. Dispose. Reward.</p>
-    <nav>
-      <ul class="navbar">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="throw.html" class="active">Throw Waste</a></li>
-        <li><a href="status.html">View Status</a></li>
-        <li><a href="calibration.html">Calibrate</a></li>
-        <li><a href="maintenance.html">Maintenance</a></li>
-        <li><a href="logs.html">Logs</a></li>
-        <li><a href="rewards.html">Rewards Shop</a></li>
-      </ul>
+    <h1>♻️ Smart Trash Bin</h1>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="throw.html" class="active">Throw Waste</a>
+      <a href="status.html">Status</a>
+      <a href="calibration.html">Calibration</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="logs.html">Logs</a>
+      <a href="rewards.html">Rewards</a>
     </nav>
   </header>
 
   <main>
-    <section class="simulation">
-      <h2>🚮 Throw Waste Simulation</h2>
-      <p>Select the type of waste you are disposing of. The system will detect its chemical composition and give rewards for correct disposal!</p>
+    <h2>Throw Waste</h2>
+    <p>Select waste type to simulate detection:</p>
+    <select id="wasteType">
+      <option value="">--Choose Type--</option>
+      <option value="Organic">Organic</option>
+      <option value="Plastic">Plastic</option>
+      <option value="Metal">Metal</option>
+      <option value="Glass">Glass</option>
+    </select>
+    <button id="detectBtn" class="btn-primary">Detect Waste</button>
 
-      <div class="waste-options">
-        <button class="waste-btn" data-type="organic">🍎 Organic</button>
-        <button class="waste-btn" data-type="plastic">🧴 Plastic</button>
-        <button class="waste-btn" data-type="metal">🔩 Metal</button>
-        <button class="waste-btn" data-type="glass">🥛 Glass</button>
-      </div>
-
-      <div id="detection-area" class="detection-area hidden">
-        <h3>🔬 Detecting Chemical Composition...</h3>
-        <div id="results"></div>
-      </div>
-
-      <div id="reward-popup" class="reward-popup hidden">
-        <h3>🏅 Correct Disposal!</h3>
-        <p>You earned <span id="points">0</span> eco-points!</p>
-        <button id="close-popup">OK</button>
-      </div>
-    </section>
+    <div id="result" class="output"></div>
   </main>
 
-  <footer>
-    <p>© 2025 Smart Trash Bin Project | Designed by Sushanth Thenraj</p>
-  </footer>
+  <footer>© 2025 Smart Trash Bin</footer>
 </body>
 </html>
