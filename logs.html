@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Logs</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
@@ -23,7 +23,11 @@
 
   <main>
     <h2>Activity Logs</h2>
-    <ul id="logOutput"></ul>
+    <ul id="logList" class="output"></ul>
+    <div style="margin-top:12px;">
+      <button id="clearLogsBtn" class="btn-primary">Clear Logs</button>
+      <button id="refreshLogsBtn" class="btn-primary">Refresh Logs</button>
+    </div>
   </main>
 
   <footer>© 2025 Smart Trash Bin</footer>

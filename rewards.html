@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Rewards</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
@@ -22,14 +22,30 @@
   </header>
 
   <main>
-    <h2>Rewards</h2>
-    <p>Balance: <strong><span id="balanceDisplay">0</span> coins</strong></p>
+    <h2>Rewards Shop</h2>
+    <p>Balance: <strong><span id="balanceDisplay">0</span></strong> coins</p>
 
-    <div id="rewardList">
-      <button class="buyBtn btn-primary" data-item="Eco Badge" data-cost="50">Eco Badge - 50 coins</button>
-      <button class="buyBtn btn-primary" data-item="Sticker Pack" data-cost="100">Sticker Pack - 100 coins</button>
-      <button class="buyBtn btn-primary" data-item="Theme Skin" data-cost="200">Theme Skin - 200 coins</button>
+    <div class="feature-grid">
+      <div class="card">
+        <h3>Sticker Pack</h3>
+        <p>Cost: 20 coins</p>
+        <button class="buyBtn btn-primary" data-item="Sticker Pack" data-cost="20">Buy</button>
+      </div>
+
+      <div class="card">
+        <h3>Eco Badge</h3>
+        <p>Cost: 40 coins</p>
+        <button class="buyBtn btn-primary" data-item="Eco Badge" data-cost="40">Buy</button>
+      </div>
+
+      <div class="card">
+        <h3>Mini Game Ticket</h3>
+        <p>Cost: 60 coins</p>
+        <button class="buyBtn btn-primary" data-item="Mini Game Ticket" data-cost="60">Buy</button>
+      </div>
     </div>
+
+    <div id="purchaseMessage" class="output">Purchase status will show here.</div>
   </main>
 
   <footer>© 2025 Smart Trash Bin</footer>

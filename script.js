@@ -1,43 +1,20 @@
-/* ============================================================
-   SMART TRASH BIN – FRONTEND SIMULATION
-   Mirrors the Python prototype logic using JS and localStorage
-   ============================================================ */
+// Smart Trash Bin - unified script for all pages
+const STORAGE_KEY = "smartTrashUserData_v1";
 
-console.log("Smart Trash Bin simulation initialized.");
-
-/* ========== GLOBAL VARIABLES ========== */
-const USER_NAME = "Sushanth";
-const STORAGE_KEY = "smartTrashUserData";
-
-/* ========== INITIALIZATION ========== */
-function initUserData() {
-  let data = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  if (!data) {
-    data = {
-      username: USER_NAME,
-      points: 0,
-      balance: 0,
-      logs: []
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  }
-  return data;
+function getData() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) return JSON.parse(raw);
+  const init = { username: "Sushanth", points: 0, balance: 0, logs: [] };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(init));
+  return init;
 }
+function saveData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
 
-function saveUserData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
+// Utilities
+function randFloat(min, max) { return +(Math.random() * (max - min) + min).toFixed(2); }
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
-/* ========== UTILITY FUNCTIONS ========== */
-function getRandom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-function randomFloat(min, max) {
-  return (Math.random() * (max - min) + min).toFixed(2);
-}
-
-/* ========== CHEMICAL SIGNATURES ========== */
+// Chemical signatures
 const CHEMICAL_SIGNS = {
   organic: ["C6H12O6", "CH4", "CO2"],
   plastic: ["C2H4", "C8H8", "C3H6"],
@@ -45,138 +22,148 @@ const CHEMICAL_SIGNS = {
   glass: ["SiO2", "Na2O", "CaO"]
 };
 
-/* ========== SENSOR DETECTION ========== */
-function detectWaste(type) {
-  const allChemicals = Object.values(CHEMICAL_SIGNS).flat();
-  const detectedChemical = getRandom(allChemicals);
-  const confidence = parseFloat(randomFloat(0.6, 1.0));
-  const correct = CHEMICAL_SIGNS[type]?.includes(detectedChemical) && confidence > 0.75;
-  return { type, detectedChemical, confidence, correct };
+// Core detection logic (shared)
+function simulateDetection(wasteType) {
+  const all = Object.values(CHEMICAL_SIGNS).flat();
+  const detected = pick(all);
+  const confidence = randFloat(0.6, 1.0);
+  const correct = (CHEMICAL_SIGNS[wasteType] || []).includes(detected) && confidence > 0.75;
+  return { wasteType, detected, confidence, correct, timestamp: new Date().toISOString() };
 }
 
-/* ========== LOG HANDLING ========== */
-function addLog(entry) {
-  const data = initUserData();
-  data.logs.push(entry);
-  if (data.logs.length > 20) data.logs.shift();
-  saveUserData(data);
-}
+// Wire Throw page
+(function wireThrow() {
+  const select = document.getElementById("wasteType");
+  const btn = document.getElementById("detectBtn");
+  const result = document.getElementById("result");
+  if (!btn || !select || !result) return;
 
-/* ========== REWARD HANDLING ========== */
-function updateRewards(points) {
-  const data = initUserData();
-  data.points += points;
-  data.balance += points;
-  saveUserData(data);
-}
-
-/* ========== THROW WASTE FEATURE ========== */
-function handleThrowWaste() {
-  const type = document.getElementById("wasteType").value;
-  const output = document.getElementById("output");
-
-  const result = detectWaste(type);
-  const { detectedChemical, confidence, correct } = result;
-
-  let message = `🧪 Detected Chemical: ${detectedChemical}<br>Confidence: ${confidence * 100}%`;
-
-  if (correct) {
-    const points = Math.floor(confidence * 10);
-    updateRewards(points);
-    addLog({ ...result, timestamp: new Date().toISOString() });
-    message += `<br><br>✅ Correct disposal of ${type} waste!<br>🏅 You earned ${points} eco-points!`;
-  } else {
-    addLog({ ...result, timestamp: new Date().toISOString() });
-    message += `<br><br>⚠️ Detection uncertain. Please dispose properly again.`;
-  }
-
-  output.innerHTML = message;
-}
-
-/* ========== STATUS PAGE ========== */
-function loadStatus() {
-  const data = initUserData();
-  document.getElementById("userName").textContent = data.username;
-  document.getElementById("userPoints").textContent = data.points;
-  document.getElementById("userBalance").textContent = data.balance;
-}
-
-/* ========== CALIBRATION ========== */
-function recalibrateSensors() {
-  const sensors = ["organic", "plastic", "metal", "glass"];
-  const output = document.getElementById("output");
-  output.innerHTML = "Recalibrating sensors...<br>";
-  sensors.forEach(sensor => {
-    const offset = randomFloat(-0.05, 0.05);
-    const multiplier = randomFloat(0.9, 1.1);
-    output.innerHTML += `🔧 ${sensor.toUpperCase()} recalibrated (offset=${offset}, mult=${multiplier})<br>`;
+  btn.addEventListener("click", () => {
+    const val = select.value.toLowerCase();
+    if (!val) { result.textContent = "Please choose a waste type."; return; }
+    result.textContent = "Scanning...";
+    setTimeout(() => {
+      const r = simulateDetection(val);
+      const data = getData();
+      data.logs.push(r);
+      if (data.logs.length > 100) data.logs.shift();
+      if (r.correct) {
+        const points = Math.floor(r.confidence * 10);
+        data.points += points;
+        data.balance += points;
+        result.innerHTML = `🔬 Detected: <b>${r.detected}</b><br>Confidence: ${r.confidence * 100}%<br>✅ Correct! +${points} points`;
+      } else {
+        result.innerHTML = `🔬 Detected: <b>${r.detected}</b><br>Confidence: ${r.confidence * 100}%<br>⚠️ Not confident enough — no points.`;
+      }
+      saveData(data);
+    }, 800);
   });
-}
+})();
 
-/* ========== MAINTENANCE CHECK ========== */
-function maintenanceCheck() {
-  const sensors = ["organic", "plastic", "metal", "glass"];
-  const output = document.getElementById("output");
-  output.innerHTML = "Running diagnostics...<br>";
-  sensors.forEach(sensor => {
-    const health = Math.floor(Math.random() * 15) + 85;
-    const temp = randomFloat(22, 30);
-    const status = health >= 90 ? "OK ✅" : "Needs Cleaning ⚠️";
-    output.innerHTML += `${sensor.toUpperCase()}: Health=${health}%, Temp=${temp}°C → ${status}<br>`;
+// Wire Status page
+(function wireStatus() {
+  const nameEl = document.getElementById("userName");
+  const ptsEl = document.getElementById("userPoints");
+  const balEl = document.getElementById("userBalance");
+  if (!ptsEl || !balEl) return;
+  const data = getData();
+  if (nameEl) nameEl.textContent = data.username;
+  ptsEl.textContent = data.points;
+  balEl.textContent = data.balance;
+})();
+
+// Wire Calibration page
+(function wireCalibration() {
+  const btn = document.getElementById("calibrateBtn");
+  const out = document.getElementById("calibrationResult");
+  if (!btn || !out) return;
+  btn.addEventListener("click", () => {
+    out.innerHTML = "Recalibrating sensors...<br>";
+    ["organic","plastic","metal","glass"].forEach(s => {
+      const offset = randFloat(-0.05, 0.05);
+      const mult = randFloat(0.9, 1.1);
+      out.innerHTML += `🔧 ${s.toUpperCase()}: offset=${offset}, multiplier=${mult}<br>`;
+    });
   });
-}
+})();
 
-/* ========== VIEW LOGS ========== */
-function loadLogs() {
-  const data = initUserData();
-  const logList = document.getElementById("logList");
-  logList.innerHTML = "";
-
-  if (data.logs.length === 0) {
-    logList.innerHTML = "<li>No logs available.</li>";
-    return;
-  }
-
-  data.logs.slice(-10).reverse().forEach(log => {
-    const li = document.createElement("li");
-    li.textContent = `${log.timestamp} | ${log.type.toUpperCase()} | ${log.detectedChemical} | Conf: ${log.confidence} | ${log.correct ? "✔ Correct" : "✖ Incorrect"}`;
-    logList.appendChild(li);
+// Wire Maintenance page
+(function wireMaintenance() {
+  const btn = document.getElementById("checkBtn");
+  const out = document.getElementById("maintenanceOutput");
+  if (!btn || !out) return;
+  btn.addEventListener("click", () => {
+    out.innerHTML = "Running diagnostics...<br>";
+    ["organic","plastic","metal","glass"].forEach(s => {
+      const health = Math.floor(Math.random()*16)+85;
+      const temp = randFloat(22, 30);
+      const status = health >= 90 ? "OK" : "Needs Cleaning";
+      out.innerHTML += `${s.toUpperCase()}: Health ${health}%, Temp ${temp}°C — ${status}<br>`;
+    });
   });
-}
+})();
 
-/* ========== REWARD SHOP ========== */
-function loadRewards() {
-  const data = initUserData();
-  document.getElementById("userBalance").textContent = data.balance;
-}
-
-function buyItem(item, cost) {
-  const data = initUserData();
-  const output = document.getElementById("output");
-  if (data.balance >= cost) {
-    data.balance -= cost;
-    saveUserData(data);
-    output.innerHTML = `✅ You purchased <b>${item}</b> for ${cost} coins.<br>Remaining Balance: ${data.balance}`;
-    document.getElementById("userBalance").textContent = data.balance;
-  } else {
-    output.innerHTML = `❌ Not enough coins to buy ${item}.`;
+// Wire Logs page
+(function wireLogs() {
+  const list = document.getElementById("logList");
+  const clearBtn = document.getElementById("clearLogsBtn");
+  const refreshBtn = document.getElementById("refreshLogsBtn");
+  if (!list) return;
+  function render() {
+    const data = getData();
+    list.innerHTML = "";
+    const logs = (data.logs || []).slice(-20).reverse();
+    if (logs.length === 0) {
+      list.innerHTML = "<li>No logs yet.</li>";
+      return;
+    }
+    logs.forEach(l => {
+      const li = document.createElement("li");
+      li.textContent = `${l.timestamp} | ${l.wasteType.toUpperCase()} | ${l.detected} | Conf: ${l.confidence} | ${l.correct ? "✔" : "✖"}`;
+      list.appendChild(li);
+    });
   }
-}
-
-/* ========== EVENT MAPPING ========== */
-document.addEventListener("DOMContentLoaded", () => {
-  const page = document.body.dataset.page;
-  if (page === "throw") {
-    document.getElementById("throwBtn").addEventListener("click", handleThrowWaste);
-  } else if (page === "status") {
-    loadStatus();
-  } else if (page === "calibration") {
-    document.getElementById("calibrateBtn").addEventListener("click", recalibrateSensors);
-  } else if (page === "maintenance") {
-    document.getElementById("maintainBtn").addEventListener("click", maintenanceCheck);
-  } else if (page === "logs") {
-    loadLogs();
-  } else if (page === "rewards") {
-    loadRewards();
+  render();
+  if (refreshBtn) refreshBtn.addEventListener("click", render);
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      const d = getData(); d.logs = []; saveData(d); render();
+    });
   }
-});
+})();
+
+// Wire Rewards page
+(function wireRewards() {
+  const balanceEl = document.getElementById("balanceDisplay");
+  const buyBtns = document.querySelectorAll(".buyBtn");
+  const purchaseMessage = document.getElementById("purchaseMessage");
+  if (!balanceEl) return;
+  function refreshBalance() {
+    balanceEl.textContent = getData().balance;
+  }
+  refreshBalance();
+  buyBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.dataset.item;
+      const cost = parseInt(btn.dataset.cost, 10);
+      const d = getData();
+      if (d.balance >= cost) {
+        d.balance -= cost;
+        saveData(d);
+        purchaseMessage.textContent = `✅ Purchased ${item}. Remaining balance: ${d.balance}`;
+      } else {
+        purchaseMessage.textContent = `❌ Not enough coins to buy ${item}.`;
+      }
+      refreshBalance();
+    });
+  });
+})();
+
+// global: update nav 'active' class based on current file
+(function setActiveNav() {
+  const path = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".navbar a").forEach(a => {
+    const href = a.getAttribute("href");
+    if (href === path) { a.classList.add("active"); } else { a.classList.remove("active"); }
+  });
+})();

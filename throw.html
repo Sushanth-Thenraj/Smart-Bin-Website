@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Throw Waste</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
@@ -22,18 +22,20 @@
   </header>
 
   <main>
-    <h2>Throw Waste</h2>
-    <p>Select waste type to simulate detection:</p>
+    <h2>Throw Waste — Simulation</h2>
+    <p>Select the waste type you are disposing of and press Detect.</p>
+
     <select id="wasteType">
-      <option value="">--Choose Type--</option>
-      <option value="Organic">Organic</option>
-      <option value="Plastic">Plastic</option>
-      <option value="Metal">Metal</option>
-      <option value="Glass">Glass</option>
+      <option value="">-- Choose waste type --</option>
+      <option value="organic">Organic</option>
+      <option value="plastic">Plastic</option>
+      <option value="metal">Metal</option>
+      <option value="glass">Glass</option>
     </select>
+
     <button id="detectBtn" class="btn-primary">Detect Waste</button>
 
-    <div id="result" class="output"></div>
+    <div id="result" class="output">Result will appear here.</div>
   </main>
 
   <footer>© 2025 Smart Trash Bin</footer>
