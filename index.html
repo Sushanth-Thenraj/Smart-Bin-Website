@@ -1,93 +1,71 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background: #0f172a;
-    color: #e2e8f0;
-    line-height: 1.6;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Trash Bin | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>♻️ Smart Trash Bin System</h1>
+        <p class="tagline">Detect. Dispose. Reward.</p>
+        <nav>
+            <ul class="navbar">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="throw.html">Throw Waste</a></li>
+                <li><a href="status.html">View Status</a></li>
+                <li><a href="calibration.html">Calibrate</a></li>
+                <li><a href="maintenance.html">Maintenance</a></li>
+                <li><a href="logs.html">Logs</a></li>
+                <li><a href="rewards.html">Rewards Shop</a></li>
+            </ul>
+        </nav>
+    </header>
 
-header {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: linear-gradient(90deg, #1e3a8a, #0ea5e9);
-    color: white;
-    border-bottom: 3px solid #38bdf8;
-}
+    <main>
+        <section class="intro">
+            <h2>Welcome, Sushanth!</h2>
+            <p>
+                The <b>Smart Trash Bin</b> is an innovative solution that identifies the
+                chemical composition of waste and rewards users for correct disposal.
+                Designed for a cleaner, smarter Bangalore, it promotes eco-conscious
+                habits using real-time detection and gamified incentives.
+            </p>
+        </section>
 
-.tagline {
-    font-style: italic;
-    font-size: 1.1rem;
-    margin-top: -0.5rem;
-}
+        <section class="features">
+            <h2>🔧 System Features</h2>
+            <div class="feature-grid">
+                <div class="card">
+                    <h3>🚮 Waste Detection</h3>
+                    <p>Simulates sensors that detect organic, plastic, metal, and glass materials.</p>
+                </div>
+                <div class="card">
+                    <h3>💰 Reward System</h3>
+                    <p>Earn eco-points for proper disposal, redeemable for in-app perks and games.</p>
+                </div>
+                <div class="card">
+                    <h3>⚙️ Calibration</h3>
+                    <p>Fine-tune sensor accuracy for real-time performance and data reliability.</p>
+                </div>
+                <div class="card">
+                    <h3>🧠 Smart Tracking</h3>
+                    <p>Logs every action with chemical readings and confidence levels for analysis.</p>
+                </div>
+            </div>
+        </section>
 
-.navbar {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-}
+        <section class="cta">
+            <h2>Start Making a Difference</h2>
+            <p>Click below to begin simulating your smart waste journey!</p>
+            <a href="throw.html" class="btn-primary">Start Simulation</a>
+        </section>
+    </main>
 
-.navbar a {
-    text-decoration: none;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    transition: background 0.3s;
-}
-
-.navbar a:hover,
-.navbar a.active {
-    background: #38bdf8;
-    color: #0f172a;
-}
-
-main {
-    padding: 2rem;
-}
-
-h2 {
-    color: #38bdf8;
-    margin-bottom: 1rem;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-}
-
-.card {
-    background: #1e293b;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
-}
-
-.card h3 {
-    margin-top: 0;
-    color: #0ea5e9;
-}
-
-.btn-primary {
-    background: #38bdf8;
-    color: #0f172a;
-    padding: 0.8rem 1.6rem;
-    text-decoration: none;
-    border-radius: 6px;
-    display: inline-block;
-    font-weight: 600;
-}
-
-.btn-primary:hover {
-    background: #0ea5e9;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #1e293b;
-    border-top: 2px solid #38bdf8;
-    margin-top: 3rem;
-}
+    <footer>
+        <p>© 2025 Smart Trash Bin Project | Designed by Sushanth Thenraj</p>
+    </footer>
+</body>
+</html>
+   
