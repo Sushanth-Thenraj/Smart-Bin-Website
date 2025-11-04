@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Trash Bin | Maintenance</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🧰 Smart Trash Bin System</h1>
+    <p class="tagline">Check system health and perform diagnostics</p>
+    <nav>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="throw.html">Throw Waste</a></li>
+        <li><a href="status.html">View Status</a></li>
+        <li><a href="calibration.html">Calibrate</a></li>
+        <li><a href="maintenance.html" class="active">Maintenance</a></li>
+        <li><a href="logs.html">Logs</a></li>
+        <li><a href="rewards.html">Rewards Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="maintenance-section">
+      <h2>System Diagnostics Panel</h2>
+      <p>Monitor the health, temperature, and performance of all active sensors.</p>
+
+      <div class="maintenance-grid">
+        <div class="maintenance-card" id="organic-status">
+          <h3>Organic Sensor 🌿</h3>
+          <p>Health: <span class="health">--%</span></p>
+          <p>Temperature: <span class="temp">--°C</span></p>
+          <p>Status: <span class="status">Pending...</span></p>
+        </div>
+
+        <div class="maintenance-card" id="plastic-status">
+          <h3>Plastic Sensor 🧴</h3>
+          <p>Health: <span class="health">--%</span></p>
+          <p>Temperature: <span class="temp">--°C</span></p>
+          <p>Status: <span class="status">Pending...</span></p>
+        </div>
+
+        <div class="maintenance-card" id="metal-status">
+          <h3>Metal Sensor ⚙️</h3>
+          <p>Health: <span class="health">--%</span></p>
+          <p>Temperature: <span class="temp">--°C</span></p>
+          <p>Status: <span class="status">Pending...</span></p>
+        </div>
+
+        <div class="maintenance-card" id="glass-status">
+          <h3>Glass Sensor 🍶</h3>
+          <p>Health: <span class="health">--%</span></p>
+          <p>Temperature: <span class="temp">--°C</span></p>
+          <p>Status: <span class="status">Pending...</span></p>
+        </div>
+      </div>
+
+      <button class="diagnostic-btn" onclick="runDiagnostics()">Run Full Diagnostics</button>
+      <div id="diagnostic-output" class="diagnostic-output"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Smart Trash Bin Project | Designed by Sushanth Thenraj</p>
+  </footer>
+</body>
+</html>

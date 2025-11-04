@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Trash Bin | Rewards Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🏅 Smart Trash Bin Rewards</h1>
+    <p class="tagline">Exchange your eco-points for fun digital rewards!</p>
+    <nav>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="throw.html">Throw Waste</a></li>
+        <li><a href="status.html">View Status</a></li>
+        <li><a href="calibration.html">Calibrate</a></li>
+        <li><a href="maintenance.html">Maintenance</a></li>
+        <li><a href="logs.html">Logs</a></li>
+        <li><a href="rewards.html" class="active">Rewards Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="rewards-section">
+      <h2>Eco Rewards Marketplace</h2>
+      <p>Spend your collected coins to unlock digital goodies and upgrades!</p>
+
+      <div class="balance-box">
+        <h3>💰 Current Balance: <span id="user-balance">--</span> coins</h3>
+        <button onclick="refreshBalance()">🔄 Refresh Balance</button>
+      </div>
+
+      <div class="rewards-grid">
+        <div class="reward-card">
+          <h3>🌿 Sticker Pack</h3>
+          <p>Cost: 20 coins</p>
+          <button onclick="purchaseItem('Sticker Pack', 20)">Buy</button>
+        </div>
+
+        <div class="reward-card">
+          <h3>🏅 Eco Badge</h3>
+          <p>Cost: 40 coins</p>
+          <button onclick="purchaseItem('Eco Badge', 40)">Buy</button>
+        </div>
+
+        <div class="reward-card">
+          <h3>🎮 Mini Game Ticket</h3>
+          <p>Cost: 60 coins</p>
+          <button onclick="purchaseItem('Mini Game Ticket', 60)">Buy</button>
+        </div>
+
+        <div class="reward-card">
+          <h3>🎨 Theme Skin</h3>
+          <p>Cost: 100 coins</p>
+          <button onclick="purchaseItem('Theme Skin', 100)">Buy</button>
+        </div>
+      </div>
+
+      <div id="purchase-message" class="purchase-message"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Smart Trash Bin Project | Designed by Sushanth Thenraj</p>
+  </footer>
+</body>
+</html>

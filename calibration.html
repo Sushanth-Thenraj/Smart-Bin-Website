@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Trash Bin | Calibration</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🔧 Smart Trash Bin System</h1>
+    <p class="tagline">Fine-tune your smart sensors</p>
+    <nav>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="throw.html">Throw Waste</a></li>
+        <li><a href="status.html">View Status</a></li>
+        <li><a href="calibration.html" class="active">Calibrate</a></li>
+        <li><a href="maintenance.html">Maintenance</a></li>
+        <li><a href="logs.html">Logs</a></li>
+        <li><a href="rewards.html">Rewards Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="calibration-section">
+      <h2>Sensor Calibration Center</h2>
+      <p>Adjust sensor offset and multiplier for optimal waste detection accuracy.</p>
+
+      <div class="sensor-grid">
+        <div class="sensor-card">
+          <h3>Organic Sensor 🌿</h3>
+          <label>Offset: <input type="number" step="0.01" id="organic-offset" value="0.0"></label>
+          <label>Multiplier: <input type="number" step="0.01" id="organic-multiplier" value="1.0"></label>
+          <button onclick="recalibrate('organic')">Recalibrate</button>
+        </div>
+
+        <div class="sensor-card">
+          <h3>Plastic Sensor 🧴</h3>
+          <label>Offset: <input type="number" step="0.01" id="plastic-offset" value="0.0"></label>
+          <label>Multiplier: <input type="number" step="0.01" id="plastic-multiplier" value="1.0"></label>
+          <button onclick="recalibrate('plastic')">Recalibrate</button>
+        </div>
+
+        <div class="sensor-card">
+          <h3>Metal Sensor ⚙️</h3>
+          <label>Offset: <input type="number" step="0.01" id="metal-offset" value="0.0"></label>
+          <label>Multiplier: <input type="number" step="0.01" id="metal-multiplier" value="1.0"></label>
+          <button onclick="recalibrate('metal')">Recalibrate</button>
+        </div>
+
+        <div class="sensor-card">
+          <h3>Glass Sensor 🍶</h3>
+          <label>Offset: <input type="number" step="0.01" id="glass-offset" value="0.0"></label>
+          <label>Multiplier: <input type="number" step="0.01" id="glass-multiplier" value="1.0"></label>
+          <button onclick="recalibrate('glass')">Recalibrate</button>
+        </div>
+      </div>
+
+      <button class="recalibrate-all-btn" onclick="recalibrateAll()">Recalibrate All Sensors</button>
+      <div id="calibration-output" class="calibration-output"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Smart Trash Bin Project | Designed by Sushanth Thenraj</p>
+  </footer>
+</body>
+</html>

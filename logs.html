@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Trash Bin | Logs</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>📜 Smart Trash Bin System</h1>
+    <p class="tagline">Track all recent detection activities</p>
+    <nav>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="throw.html">Throw Waste</a></li>
+        <li><a href="status.html">View Status</a></li>
+        <li><a href="calibration.html">Calibrate</a></li>
+        <li><a href="maintenance.html">Maintenance</a></li>
+        <li><a href="logs.html" class="active">Logs</a></li>
+        <li><a href="rewards.html">Rewards Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="logs-section">
+      <h2>Detection Logs</h2>
+      <p>Below are the last 10 detections made by the system. Logs are auto-updated every session.</p>
+
+      <table class="logs-table">
+        <thead>
+          <tr>
+            <th>Sensor</th>
+            <th>Chemical</th>
+            <th>Confidence</th>
+            <th>Correct</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody id="logs-body">
+          <!-- Log entries will be dynamically added here via JS -->
+        </tbody>
+      </table>
+
+      <div class="logs-controls">
+        <button onclick="loadLogs()">🔄 Refresh Logs</button>
+        <button onclick="clearLogs()">🗑 Clear Logs</button>
+      </div>
+
+      <div id="logs-message" class="logs-message"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Smart Trash Bin Project | Designed by Sushanth Thenraj</p>
+  </footer>
+</body>
+</html>

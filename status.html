@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Trash Bin | User Status</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>♻️ Smart Trash Bin System</h1>
+    <p class="tagline">Detect. Dispose. Reward.</p>
+    <nav>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="throw.html">Throw Waste</a></li>
+        <li><a href="status.html" class="active">View Status</a></li>
+        <li><a href="calibration.html">Calibrate</a></li>
+        <li><a href="maintenance.html">Maintenance</a></li>
+        <li><a href="logs.html">Logs</a></li>
+        <li><a href="rewards.html">Rewards Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="status-section">
+      <h2>📈 User Dashboard</h2>
+      <p>Track your eco-points, in-app coins, and achievements earned from smart waste disposal.</p>
+
+      <div class="status-card">
+        <h3>Current Balance</h3>
+        <p><strong>Eco-Points:</strong> <span id="points-balance">0</span></p>
+        <p><strong>In-App Coins:</strong> <span id="coin-balance">0</span></p>
+      </div>
+
+      <div class="progress-container">
+        <h3>Progress Towards Next Reward</h3>
+        <div class="progress-bar">
+          <div id="progress-fill"></div>
+        </div>
+        <p id="progress-text">0%</p>
+      </div>
+
+      <div class="achievement-container">
+        <h3>🏅 Achievements</h3>
+        <ul id="achievement-list">
+          <li>Throw your first organic waste ♻️</li>
+          <li>Dispose 10 plastics responsibly 🧴</li>
+          <li>Earn 100 total eco-points 💰</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Smart Trash Bin Project | Designed by Sushanth Thenraj</p>
+  </footer>
+</body>
+</html>
