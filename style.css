@@ -1,125 +1,206 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+/* ===============================
+   SMART BIN WEBSITE - STYLE.CSS
+   Theme: Clean Green Eco Design
+   =============================== */
 
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:'Poppins',sans-serif;
-  background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;flex-direction:column
-}
-header{padding:18px 12px;text-align:center;background:linear-gradient(90deg,#1e3a8a,#0ea5e9);border-bottom:3px solid #38bdf8}
-header h1{color:#fff;font-weight:600;margin-bottom:6px}
-.navbar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-.navbar a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.06)}
-.navbar a:hover{background:#38bdf8;color:#071127}
-.navbar a.active{background:#0ea5e9;color:#071127;font-weight:700;box-shadow:0 0 8px #2ea043}
-main{flex:1;padding:28px;max-width:1100px;margin:0 auto}
-h2{color:#38bdf8;margin-bottom:12px}
-.tagline{color:#a5f3fc;margin-bottom:18px;font-style:italic}
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
-.card{background:#1e293b;padding:16px;border-radius:10px;border:1px solid #24303b}
-.card h3{color:#0ea5e9;margin-bottom:8px}
-.btn-primary{background:#38bdf8;color:#071127;padding:10px 14px;border-radius:8px;border:none;cursor:pointer;text-decoration:none;display:inline-block}
-.btn-primary:hover{background:#0ea5e9}
-.output{background:#1e293b;border:1px solid #24303b;padding:12px;border-radius:8px;margin-top:12px;color:#a5f3fc}
-select{padding:8px;border-radius:6px;border:1px solid #38bdf8;background:#0f172a;color:#e2e8f0}
-footer{text-align:center;padding:12px;background:#111827;border-top:2px solid #38bdf8;margin-top:18px}
-@media (max-width:600px){main{padding:16px}.navbar a{padding:6px 8px}}
-/* === Rare Item (Eco Crystal) Styling === */
-.rare {
-  background: linear-gradient(145deg, #1a0033, #3a0073);
-  color: #fff;
-  border: 2px solid #a855f7;
-  box-shadow: 0 0 20px #a855f7;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.rare:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 35px #d946ef;
-}
-
-/* === Purchase Popup Animation === */
-#rarePopup {
-  display: none;
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(45, 0, 65, 0.9);
-  color: #fff;
-  padding: 25px 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 25px #d946ef;
-  font-size: 1.2rem;
-  z-index: 1000;
-  animation: popupFade 1s ease forwards;
-}
-
-@keyframes popupFade {
-  0% { opacity: 0; transform: translate(-50%, -60%) scale(0.9); }
-  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-}
-header {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: linear-gradient(90deg, #0f172a, #1e3a8a, #0ea5e9);
-  color: white;
-  border-bottom: 3px solid #38bdf8;
-}
-
-.navbar {
-  list-style: none;
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== General Layout ===== */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0fdf4; /* soft eco green background */
+  color: #1b1b1b;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Header ===== */
+header {
+  background: linear-gradient(135deg, #2e7d32, #388e3c);
+  color: white;
+  text-align: center;
+  padding: 25px 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ===== Navigation Bar ===== */
+nav {
+  background-color: #388e3c;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 10px 0;
 }
 
-.navbar a {
-  text-decoration: none;
+nav ul li {
+  margin: 5px 10px;
+}
+
+nav ul li a {
   color: white;
-  background: #1e3a8a;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: background 0.3s;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-.navbar a:hover,
-.navbar a.active {
-  background: #38bdf8;
-  color: #0f172a;
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #66bb6a;
+  color: white;
+  transform: scale(1.05);
 }
-.about-container {
-  max-width: 900px;
-  margin: 50px auto;
-  background: #ffffff;
-  padding: 30px 40px;
+
+/* ===== Main Container ===== */
+main {
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ===== Card Style for Each Page ===== */
+.container {
+  background: white;
+  padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease;
+}
+
+/* ===== Buttons ===== */
+button {
+  background-color: #43a047;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 10px 5px;
+}
+
+button:hover {
+  background-color: #2e7d32;
+  transform: scale(1.05);
+}
+
+/* ===== Input Fields ===== */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
   font-family: "Poppins", sans-serif;
+}
+
+/* ===== Rewards and Eco Points ===== */
+.rewards {
+  background: #e8f5e9;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.rewards h3 {
+  color: #2e7d32;
+}
+
+.reward-item {
+  background: white;
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 10px;
+  max-width: 500px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== About Page ===== */
+.about-container {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
 }
 
 .about-container h2 {
   color: #2e7d32;
-  margin-top: 30px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #a5d6a7;
+  padding-bottom: 5px;
 }
 
-.about-container p, .about-container li {
-  line-height: 1.6;
-  font-size: 1rem;
+.about-container p, 
+.about-container li {
+  color: #333;
+  margin-bottom: 12px;
 }
 
 .about-container ul {
-  list-style: disc;
-  padding-left: 20px;
+  padding-left: 25px;
 }
 
-.about-container strong {
-  color: #388e3c;
-}
-nav ul li a.active {
-  background-color: #4CAF50;
+/* ===== Footer ===== */
+footer {
+  background-color: #2e7d32;
   color: white;
-  border-radius: 8px;
-  padding: 6px 12px;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  .container, .about-container {
+    padding: 25px;
+    margin: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
 }
