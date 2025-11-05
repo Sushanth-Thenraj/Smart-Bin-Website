@@ -1,8 +1,8 @@
 /* =====================================
-   SMART BIN WEBSITE - STYLISH REDESIGN
+   SMART BIN WEBSITE - BLUE PROFESSIONAL THEME
    ===================================== */
 
-/* ---- Global Reset ---- */
+/* --- RESET --- */
 * {
   margin: 0;
   padding: 0;
@@ -11,78 +11,79 @@
   scroll-behavior: smooth;
 }
 
-/* ---- Body ---- */
+/* --- BODY --- */
 body {
-  background: linear-gradient(135deg, #e9f5ee, #c8e6c9);
-  color: #333;
+  background: linear-gradient(135deg, #eaf3ff, #d4e4ff);
+  color: #1b1b1b;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* ---- Header ---- */
+/* --- HEADER --- */
 header {
-  background: linear-gradient(90deg, #2e7d32, #4caf50);
+  background: linear-gradient(90deg, #0052cc, #007bff);
   color: white;
   text-align: center;
   padding: 35px 20px;
   font-size: 2rem;
-  letter-spacing: 1px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border-bottom: 4px solid #81c784;
+  border-bottom: 3px solid #b3d1ff;
 }
 
-/* ---- Navigation Bar ---- */
+/* --- NAVIGATION BAR --- */
 nav {
   background: white;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 nav ul {
+  list-style: none;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   padding: 10px 0;
-  list-style: none;
 }
 
 nav ul li {
-  margin: 8px 15px;
+  margin: 5px 15px;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: #2e7d32;
+  color: #0052cc;
   font-weight: 600;
   padding: 10px 18px;
   border-radius: 8px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-  background: linear-gradient(90deg, #4caf50, #66bb6a);
+  background: linear-gradient(90deg, #007bff, #339cff);
   color: white;
-  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
 }
 
-/* ---- Main Container ---- */
+/* --- MAIN CONTENT AREA --- */
 main {
   flex: 1;
-  padding: 40px 20px;
+  padding: 50px 20px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   animation: fadeIn 1s ease;
 }
 
-/* ---- Card Style ---- */
+/* --- CONTAINER / CARD --- */
 .container {
-  background: white;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
   padding: 40px;
   width: 90%;
   max-width: 950px;
@@ -92,70 +93,72 @@ main {
 
 .container:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
 }
 
-/* ---- Headings ---- */
+/* --- HEADINGS --- */
 h2, h3 {
-  color: #2e7d32;
+  color: #0052cc;
   margin-bottom: 15px;
+  font-weight: 600;
 }
 
 p {
-  margin-bottom: 15px;
   font-size: 1rem;
   line-height: 1.7;
+  color: #333;
+  margin-bottom: 18px;
 }
 
-/* ---- Buttons ---- */
+/* --- BUTTONS --- */
 button {
-  background: linear-gradient(90deg, #43a047, #66bb6a);
+  background: linear-gradient(90deg, #007bff, #339cff);
   color: white;
   border: none;
-  padding: 12px 25px;
+  padding: 12px 28px;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: linear-gradient(90deg, #388e3c, #43a047);
+  background: linear-gradient(90deg, #0056b3, #007bff);
   transform: scale(1.07);
-  box-shadow: 0 4px 12px rgba(56, 142, 60, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
 }
 
-/* ---- Inputs ---- */
+/* --- INPUTS --- */
 input, select, textarea {
   width: 100%;
   padding: 12px;
-  margin: 12px 0 20px;
-  border-radius: 10px;
+  margin: 10px 0 20px;
+  border-radius: 8px;
   border: 1.5px solid #ccc;
   font-size: 1rem;
-  outline: none;
-  transition: border 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: #66bb6a;
-  box-shadow: 0 0 8px rgba(102, 187, 106, 0.3);
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
 }
 
-/* ---- Rewards Section ---- */
+/* --- REWARDS SECTION --- */
 .rewards {
-  background: #f1f8e9;
+  background: #f0f7ff;
   border-radius: 15px;
   padding: 25px;
-  margin-top: 20px;
+  margin-top: 25px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .reward-item {
   background: white;
-  margin: 10px auto;
+  margin: 15px auto;
   padding: 18px;
   border-radius: 12px;
   max-width: 600px;
@@ -165,20 +168,20 @@ input:focus, select:focus, textarea:focus {
 
 .reward-item:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 15px rgba(76, 175, 80, 0.2);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.2);
 }
 
-/* ---- About Page ---- */
+/* --- ABOUT PAGE --- */
 .about-container {
-  background: white;
+  background: rgba(255, 255, 255, 0.96);
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .about-container h2 {
-  color: #2e7d32;
-  border-bottom: 3px solid #a5d6a7;
+  color: #0052cc;
+  border-bottom: 3px solid #a8cfff;
   display: inline-block;
   padding-bottom: 5px;
   margin-bottom: 20px;
@@ -194,24 +197,24 @@ input:focus, select:focus, textarea:focus {
   margin-bottom: 10px;
 }
 
-/* ---- Footer ---- */
+/* --- FOOTER --- */
 footer {
-  background: linear-gradient(90deg, #2e7d32, #43a047);
+  background: linear-gradient(90deg, #0052cc, #007bff);
   color: white;
   text-align: center;
   padding: 15px 0;
   font-size: 0.95rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ---- Animations ---- */
+/* --- ANIMATIONS --- */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(25px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ---- Responsive Design ---- */
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 768px) {
   header {
     font-size: 1.6rem;
