@@ -1,226 +1,185 @@
-/* =======================================
-   SMART BIN WEBSITE - CLEAN BLUE THEME
-   ======================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+/* =============================
+   GLOBAL LAYOUT & THEME
+   ============================= */
 
 body {
-  background-color: #e6f0ff;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #e8f0ff, #ffffff);
   color: #222;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* HEADER */
-header {
-  background-color: #0066cc;
-  color: #fff;
-  text-align: center;
-  padding: 25px 10px;
-  font-size: 2rem;
-  font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
+/* =============================
+   NAVIGATION BAR
+   ============================= */
 
-/* NAVIGATION BAR */
 nav {
-  background-color: #ffffff;
-  border-bottom: 2px solid #cce0ff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-}
-
-nav ul {
-  list-style: none;
+  background-color: #007BFF;
+  color: white;
+  padding: 15px 0;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  padding: 12px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-nav ul li {
-  margin: 0 18px;
-}
-
-nav ul li a {
+nav a {
+  color: white;
   text-decoration: none;
-  color: #004aad;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: all 0.25s ease;
+  margin: 0 20px;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-  background-color: #007bff;
-  color: #fff;
-  box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
+nav a:hover {
+  color: #cce4ff;
 }
 
-/* MAIN CONTENT */
-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 20px;
-}
+/* =============================
+   MAIN CONTAINER
+   ============================= */
 
 .container {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 40px;
-  width: 90%;
-  max-width: 950px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  max-width: 800px;
+  margin: 50px auto;
+  background: white;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.container h1, 
+.container h2 {
+  color: #007BFF;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.container p {
+  color: #333;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* =============================
+   BUTTONS
+   ============================= */
+
+button, .btn {
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.03);
+}
+
+/* =============================
+   FORM INPUTS
+   ============================= */
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* =============================
+   TABLE STYLE (for logs)
+   ============================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* =============================
+   REWARD ITEMS GRID
+   ============================= */
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.reward-card {
+  background-color: #f9fcff;
+  border: 1px solid #dce9ff;
+  border-radius: 10px;
+  padding: 20px;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.container:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+.reward-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.15);
 }
 
-h2, h3 {
-  color: #004aad;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 18px;
-}
-
-/* BUTTONS */
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.2s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-}
-
-/* FORMS */
-input, select, textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 12px 0 20px;
-  border-radius: 6px;
-  border: 1.5px solid #ccc;
-  font-size: 1rem;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-input:focus, select:focus, textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
-  outline: none;
-}
-
-/* REWARDS SECTION */
-.rewards {
-  background-color: #f5f9ff;
-  border-radius: 10px;
-  padding: 30px;
-  margin-top: 25px;
-  text-align: center;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-}
-
-.reward-item {
-  background-color: #ffffff;
-  border: 1px solid #d4e2ff;
-  border-radius: 8px;
-  padding: 18px;
-  margin: 12px auto;
-  max-width: 600px;
-  transition: all 0.25s ease;
-}
-
-.reward-item:hover {
-  transform: scale(1.03);
-  border-color: #007bff;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
-}
-
-/* ABOUT PAGE */
-.about-container {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-.about-container h2 {
-  color: #004aad;
-  border-bottom: 3px solid #a8cfff;
-  display: inline-block;
-  padding-bottom: 6px;
-  margin-bottom: 20px;
-}
-
-.about-container p {
-  color: #1a1a1a;
-  margin-bottom: 15px;
-}
-
-.about-container ul {
-  padding-left: 20px;
-}
-
-.about-container li {
+.reward-card h3 {
+  color: #007BFF;
   margin-bottom: 10px;
-  color: #222;
 }
 
-/* FOOTER */
+/* =============================
+   FOOTER
+   ============================= */
+
 footer {
-  background-color: #0066cc;
+  background-color: #007BFF;
   color: white;
   text-align: center;
-  padding: 15px 0;
-  font-size: 0.95rem;
-  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.15);
+  padding: 12px 0;
+  font-size: 0.9rem;
+  margin-top: auto;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  header {
-    font-size: 1.6rem;
-  }
+/* =============================
+   RESPONSIVE DESIGN
+   ============================= */
 
-  nav ul {
-    flex-direction: column;
-  }
-
-  nav ul li {
-    margin: 8px 0;
-  }
-
+@media (max-width: 600px) {
   .container {
-    padding: 25px;
+    margin: 20px;
+    padding: 30px;
   }
 
-  button {
-    width: 100%;
+  nav a {
+    margin: 0 10px;
   }
 }
