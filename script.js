@@ -362,3 +362,37 @@
   };
 
 })();
+// --- Reward Page Notification ---
+document.addEventListener("DOMContentLoaded", () => {
+  const rewardButtons = document.querySelectorAll(".buyBtn, .reward-btn, button.buy");
+
+  rewardButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const itemName = button.dataset.item || button.textContent.trim() || "Reward";
+      
+      // Create toast/notification
+      const toast = document.createElement("div");
+      toast.textContent = `🎁 You clicked on "${itemName}"!`;
+      toast.style.position = "fixed";
+      toast.style.bottom = "20px";
+      toast.style.right = "20px";
+      toast.style.background = "#0078ff";
+      toast.style.color = "white";
+      toast.style.padding = "12px 18px";
+      toast.style.borderRadius = "8px";
+      toast.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
+      toast.style.zIndex = "9999";
+      toast.style.fontFamily = "Poppins, sans-serif";
+      toast.style.fontSize = "14px";
+      toast.style.opacity = "0";
+      toast.style.transition = "opacity 0.3s ease";
+
+      document.body.appendChild(toast);
+      setTimeout(() => { toast.style.opacity = "1"; }, 10);
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        setTimeout(() => toast.remove(), 500);
+      }, 2000);
+    });
+  });
+});
