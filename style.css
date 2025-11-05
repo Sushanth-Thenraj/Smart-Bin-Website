@@ -89,3 +89,37 @@ header {
   background: #38bdf8;
   color: #0f172a;
 }
+.about-container {
+  max-width: 900px;
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.about-container h2 {
+  color: #2e7d32;
+  margin-top: 30px;
+}
+
+.about-container p, .about-container li {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.about-container ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.about-container strong {
+  color: #388e3c;
+}
+nav ul li a.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  padding: 6px 12px;
+}

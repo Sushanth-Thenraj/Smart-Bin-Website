@@ -362,3 +362,87 @@
   };
 
 })();
+// Navigation handler
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll("nav a");
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+    });
+  });
+});
+// script.js — Smart Trash Bin Website
+// Handles page navigation and interactions
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Highlight active nav link
+  const currentPage = window.location.pathname.split("/").pop();
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  navLinks.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+
+  // Button redirects for feature pages
+  const navActions = {
+    "throwBtn": "throw.html",
+    "statusBtn": "status.html",
+    "calibrationBtn": "calibration.html",
+    "maintenanceBtn": "maintenance.html",
+    "rewardsBtn": "rewards.html",
+    "aboutBtn": "about.html"
+  };
+
+  Object.keys(navActions).forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) {
+      btn.addEventListener("click", () => {
+        window.location.href = navActions[id];
+      });
+    }
+  });
+
+  // Reward system (basic local storage simulation)
+  const buyButtons = document.querySelectorAll(".buy-btn");
+  buyButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const itemName = btn.getAttribute("data-item");
+      const cost = parseInt(btn.getAttribute("data-cost"));
+
+      let balance = parseInt(localStorage.getItem("ecoBalance") || "500");
+      if (balance >= cost) {
+        balance -= cost;
+        localStorage.setItem("ecoBalance", balance);
+        alert(`You bought ${itemName} for ${cost} coins! Remaining balance: ${balance}`);
+      } else {
+        alert("Not enough points to buy this item!");
+      }
+    });
+  });
+
+  // Display balance if element exists
+  const balanceDisplay = document.getElementById("balanceDisplay");
+  if (balanceDisplay) {
+    const balance = localStorage.getItem("ecoBalance") || "500";
+    balanceDisplay.textContent = balance;
+  }
+
+  // Maintenance simulation
+  const maintenanceButton = document.getElementById("checkMaintenance");
+  if (maintenanceButton) {
+    maintenanceButton.addEventListener("click", () => {
+      const systems = ["Organic Sensor", "Plastic Sensor", "Metal Sensor", "Glass Sensor"];
+      let report = "";
+      systems.forEach(s => {
+        const health = Math.floor(Math.random() * 21) + 80; // 80–100%
+        const status = health >= 90 ? "OK ✅" : "Needs Cleaning ⚠️";
+        report += `${s}: ${health}% - ${status}\n`;
+      });
+      alert(report);
+    });
+  }
+});
