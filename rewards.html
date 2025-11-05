@@ -3,65 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Trash Bin | Rewards</title>
+  <title>Rewards - EC Bin</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
 </head>
-<body data-page="rewards">
-  <header>
+<body>
   <nav>
-    <ul class="navbar">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="throw.html">Throw Waste</a></li>
-      <li><a href="status.html">Status</a></li>
-      <li><a href="calibration.html">Calibration</a></li>
-      <li><a href="maintenance.html">Maintenance</a></li>
-      <li><a href="logs.html">Logs</a></li>
-      <li><a href="rewards.html" class="active">Rewards</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-
-    </ul>
+    <a href="index.html">Home</a>
+    <a href="throw.html">Throw Waste</a>
+    <a href="calibration.html">Calibration</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="logs.html">View Logs</a>
+    <a href="rewards.html">Rewards</a>
+    <a href="about.html">About</a>
   </nav>
-</header>
 
+  <div class="container">
+    <h1>🎁 Rewards Shop</h1>
+    <p>Exchange your eco-points for exclusive digital collectibles and upgrades!</p>
 
-  <main>
-    <section class="content">
-      <h2>Exchange Your Eco-Points for Rewards!</h2>
-      <p>Balance: <span id="userBalance">0</span> coins</p>
-
-      <div class="card-grid">
-        <div class="card">
-          <h3>Sticker Pack</h3>
-          <p>Cost: 20 coins</p>
-          <button class="buyBtn btn-primary" data-item="Sticker Pack" data-cost="20">Buy</button>
-        </div>
-
-        <div class="card">
-          <h3>Eco Badge</h3>
-          <p>Cost: 40 coins</p>
-          <button class="buyBtn btn-primary" data-item="Eco Badge" data-cost="40">Buy</button>
-        </div>
-
-        <div class="card">
-          <h3>Theme Skin</h3>
-          <p>Cost: 100 coins</p>
-          <button class="buyBtn btn-primary" data-item="Theme Skin" data-cost="100">Buy</button>
-        </div>
-
-        <div class="card rare">
-          <h3>💎 Eco Crystal</h3>
-          <p>Cost: 500 coins</p>
-          <button class="buyBtn btn-primary" data-item="Eco Crystal" data-cost="500">Buy</button>
-        </div>
+    <div class="rewards-grid">
+      <div class="reward-card">
+        <h3>Sticker Pack</h3>
+        <p>Cost: 20 coins</p>
+        <button>Redeem</button>
       </div>
+      <div class="reward-card">
+        <h3>Eco Badge</h3>
+        <p>Cost: 40 coins</p>
+        <button>Redeem</button>
+      </div>
+      <div class="reward-card">
+        <h3>Theme Skin</h3>
+        <p>Cost: 100 coins</p>
+        <button>Redeem</button>
+      </div>
+      <div class="reward-card">
+        <h3>Eco Crystal 💎</h3>
+        <p>Cost: 500 coins</p>
+        <button>Redeem</button>
+      </div>
+    </div>
+  </div>
 
-      <div id="output" class="output"></div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Smart Trash Bin Project | Designed by Sushanth</p>
-  </footer>
+  <footer>© 2025 Team EC Bin | Making Waste Management Smarter</footer>
 </body>
 </html>
