@@ -345,6 +345,21 @@
       if (document.querySelector("#logList") || document.querySelector("#logs-body") || document.querySelector(".log-row")) initLogsPage();
       if (document.querySelector(".buyBtn") || document.querySelector(".reward-btn")) initRewardsPage();
 
+      // wire up optional refresh buttons that may appear on pages
+      const refreshStatusBtn = document.querySelector("#refreshStatusBtn");
+      if (refreshStatusBtn) refreshStatusBtn.addEventListener("click", () => updateStatusUI());
+
+      const refreshLogsBtn = document.querySelector("#refreshLogsBtn");
+      if (refreshLogsBtn) refreshLogsBtn.addEventListener("click", () => {
+        // initLogsPage attaches its own handler; trigger a manual render by calling initLogsPage
+        initLogsPage();
+      });
+
+      const clearLogsBtn = document.querySelector("#clearLogsBtn");
+      if (clearLogsBtn) clearLogsBtn.addEventListener("click", () => {
+        const d = readData(); d.logs = []; saveData(d); initLogsPage();
+      });
+
       log("Initialization complete.");
     } catch (e) {
       err("Initialization failed:", e);
@@ -353,7 +368,7 @@
 
   // expose for debugging
   window.SmartBin = {
-    readData, saveData, addPoints, addLog, simulateDetection: (t) => {
+    readData, saveData, addPoints, addLog, updateStatus: updateStatusUI, simulateDetection: (t) => {
       const all = Object.values(CHEMICAL_SIGNS).flat();
       const detected = pick(all); const confidence = randFloat(0.6, 1.0);
       const correct = CHEMICAL_SIGNS[t] && CHEMICAL_SIGNS[t].includes(detected) && confidence > 0.75;

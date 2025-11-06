@@ -1,45 +1,58 @@
+<!-- =============================
+     SMART BIN WEBSITE - INDEX
+     ============================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Throw Waste</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bin - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <h1>♻️ Smart Trash Bin</h1>
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="throw.html" class="active">Throw Waste</a>
-      <a href="status.html">Status</a>
-      <a href="calibration.html">Calibration</a>
-      <a href="maintenance.html">Maintenance</a>
-      <a href="logs.html">Logs</a>
-      <a href="rewards.html">Rewards</a>
-      <li><a href="about.html" class="active">About</a></li>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">Smart Bin</a>
+            <nav class="navbar" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="throw.html">Throw Waste</a></li>
+                    <li><a href="calibration.html">Calibration</a></li>
+                    <li><a href="maintenance.html">Maintenance</a></li>
+                    <li><a href="rewards.html">Rewards</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    </nav>
-  </header>
+    <main class="container">
+        <section class="content-card">
+            <h2>Throw Waste</h2>
+            <p>Select the type of waste you are disposing and press <em>Detect</em> to simulate sensor reading.</p>
 
-  <main>
-    <h2>Throw Waste — Simulation</h2>
-    <p>Select the waste type you are disposing of and press Detect.</p>
+            <label for="wasteType">Waste Type</label>
+            <select id="wasteType">
+                <option value="">-- choose waste type --</option>
+                <option value="organic">Organic</option>
+                <option value="plastic">Plastic</option>
+                <option value="metal">Metal</option>
+                <option value="glass">Glass</option>
+            </select>
 
-    <select id="wasteType">
-      <option value="">-- Choose waste type --</option>
-      <option value="organic">Organic</option>
-      <option value="plastic">Plastic</option>
-      <option value="metal">Metal</option>
-      <option value="glass">Glass</option>
-    </select>
+            <div class="button-row">
+                <button id="detectBtn" class="btn">Detect & Submit</button>
+            </div>
 
-    <button id="detectBtn" class="btn-primary">Detect Waste</button>
+            <div id="result" class="result" aria-live="polite"></div>
+        </section>
+    </main>
 
-    <div id="result" class="output">Result will appear here.</div>
-  </main>
-
-  <footer>© 2025 Smart Trash Bin</footer>
+    <footer>
+        <p>&copy; 2025 Team EC Bin | Smart Waste Management for a Cleaner Future</p>
+    </footer>
 </body>
 </html>
+
+<!-- Repeat this header/footer layout for throw.html, calibration.html, maintenance.html, rewards.html, and about.html -->

@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Logs</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
-</head>
-<body>
-  <header>
-    <h1>♻️ Smart Trash Bin</h1>
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="throw.html">Throw Waste</a>
-      <a href="status.html">Status</a>
-      <a href="calibration.html">Calibration</a>
-      <a href="maintenance.html">Maintenance</a>
-      <a href="logs.html" class="active">Logs</a>
-      <a href="rewards.html">Rewards</a>
-      <li><a href="about.html" class="active">About</a></li>
-
-    </nav>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs | Smart Bin</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Smart Bin</a>
+      <nav class="navbar" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="throw.html">Throw Waste</a></li>
+          <li><a href="calibration.html">Calibration</a></li>
+          <li><a href="maintenance.html">Maintenance</a></li>
+          <li><a href="status.html">Status</a></li>
+          <li><a href="logs.html">Logs</a></li>
+          <li><a href="rewards.html">Rewards</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h2>Activity Logs</h2>
-    <ul id="logList" class="output"></ul>
-    <div style="margin-top:12px;">
-      <button id="clearLogsBtn" class="btn-primary">Clear Logs</button>
-      <button id="refreshLogsBtn" class="btn-primary">Refresh Logs</button>
-    </div>
+  <main class="container">
+    <section class="content-card">
+      <h2>Recent Waste Logs</h2>
+      <p>Below are the last few actions recorded by your Smart Bin:</p>
+      <ul id="logList" class="result-list" aria-live="polite"></ul>
+      <div class="button-row">
+        <button id="refreshLogsBtn" class="btn">Refresh Logs</button>
+        <button id="clearLogsBtn" class="btn">Clear Logs</button>
+      </div>
+    </section>
   </main>
 
-  <footer>© 2025 Smart Trash Bin</footer>
-</body>
-</html>
+  <footer>
+    <p>&copy; 2025 Team EC Bin | Smart Waste Management for a Cleaner Future</p>
+  </footer>
+  </body>
+  </html>

@@ -1,47 +1,62 @@
+<!-- =============================
+     SMART BIN WEBSITE - INDEX
+     ============================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Smart Trash Bin | Home</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bin - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <h1>♻️ Smart Trash Bin System</h1>
-    <nav class="navbar">
-      <a href="index.html" class="active">Home</a>
-      <a href="throw.html">Throw Waste</a>
-      <a href="status.html">Status</a>
-      <a href="calibration.html">Calibration</a>
-      <a href="maintenance.html">Maintenance</a>
-      <a href="logs.html">Logs</a>
-      <a href="rewards.html">Rewards</a>
-      <li><a href="about.html" class="active">About</a></li>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">Smart Bin</a>
+            <nav class="navbar" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="throw.html">Throw Waste</a></li>
+                    <li><a href="calibration.html">Calibration</a></li>
+                    <li><a href="maintenance.html">Maintenance</a></li>
+                    <li><a href="rewards.html">Rewards</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    </nav>
-  </header>
+    <main class="container">
+        <section class="hero">
+            <h2>Welcome to Smart Bin</h2>
+            <p>Helping communities manage waste responsibly using sensor-based technology and eco-rewards.</p>
+            <a href="throw.html" class="btn">Start Sorting</a>
+        </section>
 
-  <main>
-    <h2>Welcome</h2>
-    <p class="tagline">Detect waste, earn points, and save the planet 🌏</p>
+        <section class="features">
+            <div class="card">
+                <h3>Smart Detection</h3>
+                <p>Our chemical sensors automatically detect waste type and ensure proper sorting.</p>
+            </div>
+            <div class="card">
+                <h3>Eco Rewards</h3>
+                <p>Earn eco-points for responsible waste disposal and redeem them for cool rewards!</p>
+            </div>
+            <div class="card">
+                <h3>Environment Friendly</h3>
+                <p>Reduce landfill waste and promote recycling with real-time feedback from your bin.</p>
+            </div>
+        </section>
+        <section class="status-quick">
+            <p><strong>User:</strong> <span id="home-username">Guest</span> • <strong>Balance:</strong> <span id="home-balance">0</span> pts</p>
+        </section>
+    </main>
 
-    <div class="feature-grid">
-      <div class="card">
-        <h3>Throw Waste</h3>
-        <p>Simulate disposal and get rewards.</p>
-        <a class="btn-primary" href="throw.html">Start Simulation</a>
-      </div>
-
-      <div class="card">
-        <h3>Rewards</h3>
-        <p>View and redeem your eco-points.</p>
-        <a class="btn-primary" href="rewards.html">Open Shop</a>
-      </div>
-    </div>
-  </main>
-
-  <footer>© 2025 Smart Trash Bin</footer>
+    <footer>
+        <p>&copy; 2025 Team EC Bin | Smart Waste Management for a Cleaner Future</p>
+    </footer>
 </body>
 </html>
+
+<!-- Repeat this header/footer layout for throw.html, calibration.html, maintenance.html, rewards.html, and about.html -->

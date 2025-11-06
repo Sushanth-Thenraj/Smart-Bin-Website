@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Maintenance</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
-</head>
-<body>
-  <header>
-    <h1>♻️ Smart Trash Bin</h1>
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="throw.html">Throw Waste</a>
-      <a href="status.html">Status</a>
-      <a href="calibration.html">Calibration</a>
-      <a href="maintenance.html" class="active">Maintenance</a>
-      <a href="logs.html">Logs</a>
-      <a href="rewards.html">Rewards</a>
-      <li><a href="about.html" class="active">About</a></li>
-
-    </nav>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance | Smart Bin</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Smart Bin</a>
+      <nav class="navbar" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="throw.html">Throw Waste</a></li>
+          <li><a href="calibration.html">Calibration</a></li>
+          <li><a href="maintenance.html">Maintenance</a></li>
+          <li><a href="rewards.html">Rewards</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h2>Maintenance & Diagnostics</h2>
-    <p>Run system diagnostics to check sensor health.</p>
-
-    <button id="checkBtn" class="btn-primary">Run Diagnostics</button>
-    <div id="maintenanceOutput" class="output">Diagnostics output will appear here.</div>
+  <main class="container">
+    <section class="content-card">
+      <h2>Maintenance Check</h2>
+      <p>Perform system diagnostics for all sensors.</p>
+      <div class="button-group">
+        <button id="runDiagnostics" class="btn">Run Diagnostics</button>
+      </div>
+      <div id="maintenanceOutput" class="result" aria-live="polite"></div>
+    </section>
   </main>
 
-  <footer>© 2025 Smart Trash Bin</footer>
-</body>
-</html>
+  <footer>
+    <p>&copy; 2025 Team EC Bin | Smart Waste Management for a Cleaner Future</p>
+  </footer>
+  </body>
+  </html>

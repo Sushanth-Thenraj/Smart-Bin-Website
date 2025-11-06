@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>User Status</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
-</head>
-<body>
-  <header>
-    <h1>♻️ Smart Trash Bin</h1>
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="throw.html">Throw Waste</a>
-      <a href="status.html" class="active">Status</a>
-      <a href="calibration.html">Calibration</a>
-      <a href="maintenance.html">Maintenance</a>
-      <a href="logs.html">Logs</a>
-      <a href="rewards.html">Rewards</a>
-      <li><a href="about.html" class="active">About</a></li>
-
-    </nav>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status | Smart Bin</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Smart Bin</a>
+      <nav class="navbar" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="throw.html">Throw Waste</a></li>
+          <li><a href="calibration.html">Calibration</a></li>
+          <li><a href="maintenance.html">Maintenance</a></li>
+          <li><a href="status.html">Status</a></li>
+          <li><a href="logs.html">Logs</a></li>
+          <li><a href="rewards.html">Rewards</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h2>User Status</h2>
-    <p><strong>User:</strong> <span id="userName">-</span></p>
-    <p><strong>Total Points:</strong> <span id="userPoints">0</span></p>
-    <p><strong>Balance (coins):</strong> <span id="userBalance">0</span></p>
+  <main class="container">
+    <section class="content-card">
+      <h2>User Status</h2>
+      <p><b>User:</b> <span id="userName">Sushanth</span></p>
+      <p><b>Total Points:</b> <span id="userPoints">0</span></p>
+      <p><b>Balance:</b> <span id="userBalance">0</span></p>
+      <div class="button-row">
+        <button id="refreshStatusBtn" class="btn">Refresh Status</button>
+      </div>
+      <div id="statusInfo" class="result" aria-live="polite"></div>
+    </section>
   </main>
 
-  <footer>© 2025 Smart Trash Bin</footer>
-</body>
-</html>
+  <footer>
+    <p>&copy; 2025 Team EC Bin | Smart Waste Management for a Cleaner Future</p>
+  </footer>
+  </body>
+  </html>
